@@ -11,7 +11,7 @@
     <button id="stop">Stop</button>
 </body>
 <script>
-    f=1
+    let f;
     const sayDate = function(){
         if(f==1){
         console.log("me again",Date.now());
@@ -23,13 +23,13 @@
     const startB = document.getElementById('start').addEventListener('click',function(){
         // const sayDate = function(str){
         //console.log("please",Date.now());
-        f=1
-        setInterval(sayDate,1000)
+        f=1;
+        interValid = setInterval(sayDate,1000)
     })
 
     const stopB = document.getElementById('stop')
     .addEventListener('click',function(){
-    f=0
+    f=0;
     })
 
 </script>
