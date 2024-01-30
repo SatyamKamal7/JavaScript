@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>htnml Events </title>
+</head>
+<body style="background-color: #414141; color: aliceblue;">
+    <h2>Amazing image</h2>
+    <div >
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" ></li>
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+   </div>
+</body>
+<script>
+    //document.getElementById('owl').onclick=function(){//this is right but bad me onclick problem kr skta h bd eprojects me onclick hm direct html me owl element pe bhi lga skte h but its not nice sign of a nice coder
+        //alert("ow clicked")
+    //}
+    // thats why we will use event listener they gives us propagation ability
+    // one more old way using attachEvent() , jQuery-on
+    // document.getElementById('owl').addEventListener('click',function(e){
+    //     console.log(e)
+    //     alert("owl clicked again")
+    // },false)// type, timestamp,defaultPrevented,target,toElement,srcElement,currentTarget,clientX,clientY,screenX,screenY
+    //altekey , ctrlkey,shiftkey,keyCode
+    // document.getElementById('images').addEventListener('click',function(e){
+    //     alert("clicked ul")
+    // },false)
+    
+    // document.getElementById('owl').addEventListener('click',function(e){
+    //     alert("owl clicked")
+    //     e.stopPropagation();
+    // },false)
+    // document.getElementById('google').addEventListener('click',function(e){
+    //     e.preventDefault();//any link jo click krne pe apko kahi bhej rhi h ya by defaut kuch bhi kam ho rha h toh us by default thing ko rokne ke liye we preventDefault method
+    //     alert("its google jo tum dabaye ja rhe ho")
+    //     e.stopPropagation();
+    // },false)
+    
+    // now i want that whenever i click on any image then the image should be vanished thats it letrts do it
+    document.querySelector('#images').addEventListener('click',function(e){
+       //console.log(e.target.parentNode);//here we get any image ka parent mtlb li
+       //let removeIt = e.target.parentNode
+       //removeIt.remove();//one more way to delete
+
+       //removeIt.parentNode.removeChild(removeIt)
+
+       // when u click on google or anywhere except the images then complete list will remove because google list ka parent Node ul toh poori list hi gayab
+       //iske liye checks lga skte hai
+       console.log(e.target.tagName);
+       if(e.target.tagName==='IMG'){
+        console.log(e.target.id);
+        let removeIt = e.target.parentNode
+        removeIt.remove();
+       }
+
+    })
+</script>
+</html>
