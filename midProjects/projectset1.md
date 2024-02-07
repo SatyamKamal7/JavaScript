@@ -189,7 +189,8 @@ const randomColor = function(){
 };
 let interValId;
 const startChangingColor = function(){
-  interValId = setInterval(changeBgColor,1000);
+  if(!intervalId){
+  interValId = setInterval(changeBgColor,1000);}
 
   function changeBgColor(){
     document.body.style.backgroundColor=randomColor();
@@ -197,8 +198,35 @@ const startChangingColor = function(){
 };
 const stopChangingColor = function(){
   clearInterval(interValId)
+  intervalId = null;
 }
 document.querySelector('#start').addEventListener('click',startChangingColor);
 
 document.querySelector('#stop').addEventListener('click',stopChangingColor);
+```
+# project 5 -> keyBoard magic
+
+```javascript
+const insert = document.getElementById('insert');
+
+window.addEventListener('keydown', (e) => {
+  insert.innerHTML = `
+    <div class='color'>
+    <table>
+    <tr>
+      <th>Key</th>
+      <th>Keycode</th> 
+      <th>Code</th>
+    </tr>
+    <tr>
+      <td>${e.key === ' ' ? 'Space' : e.key}</td>
+      <td>${e.keyCode}</td> 
+      <td>${e.code}</td>
+    </tr>
+    
+  </table>
+    </div>
+  `;
+});
+
 ```
